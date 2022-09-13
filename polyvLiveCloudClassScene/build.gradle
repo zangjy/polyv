@@ -1,4 +1,21 @@
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+//    id 'maven-publish'
+    id 'com.github.dcendents.android-maven'
+}
+
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            release(MavenPublication) {
+//                from components.release
+//                groupId = 'com.github.zangjy'
+//                artifactId = 'polyvLiveCloudClassScene'
+//                version = '1.0.0'
+//            }
+//        }
+//    }
+//}
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
