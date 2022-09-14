@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.easefun.polyv.livecloudclass.scenes.PLVLCCloudClassActivity;
 import com.easefun.polyv.livecommon.module.config.PLVLiveChannelConfigFiller;
@@ -17,7 +18,6 @@ import com.plv.livescenes.feature.login.PLVPlaybackLoginResult;
 import com.plv.livescenes.feature.login.PLVSceneLoginManager;
 import com.plv.livescenes.playback.video.PLVPlaybackListType;
 import com.plv.thirdpart.blankj.utilcode.util.StringUtils;
-import com.plv.thirdpart.blankj.utilcode.util.ToastUtils;
 
 public class SimpleJumpActivity extends Activity {
     private PLVSceneLoginManager plvSceneLoginManager;
@@ -85,7 +85,7 @@ public class SimpleJumpActivity extends Activity {
         viewerAvatar = intent.getStringExtra(VIEWER_AVATAR_KEY);
         //校验必要参数是否完整
         if (StringUtils.isEmpty(type) || StringUtils.isEmpty(appId) || StringUtils.isEmpty(appSecret) || StringUtils.isEmpty(userId) || StringUtils.isEmpty(channelId)) {
-            ToastUtils.showShort("缺失必要参数");
+            Toast.makeText(this, "缺失必要参数", Toast.LENGTH_SHORT).show();
             finish();
         }
         //如果VideoId缺失则补全
@@ -111,7 +111,7 @@ public class SimpleJumpActivity extends Activity {
                 loginPlaybackNew(appId, appSecret, userId, channelId, videoId);
                 break;
             default:
-                ToastUtils.showShort("直播类型错误");
+                Toast.makeText(this, "直播类型错误", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
         }
@@ -129,17 +129,17 @@ public class SimpleJumpActivity extends Activity {
                 if (PLVLiveScene.isCloudClassSceneSupportType(channelType)) {
                     PLVLaunchResult launchResult = PLVLCCloudClassActivity.launchLive(SimpleJumpActivity.this, channelId, channelType, viewerId, viewerName, viewerAvatar);
                     if (!launchResult.isSuccess()) {
-                        ToastUtils.showShort(launchResult.getErrorMessage());
+                        Toast.makeText(SimpleJumpActivity.this, launchResult.getErrorMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    ToastUtils.showShort(com.easefun.polyv.livecommon.R.string.plv_scene_login_toast_cloudclass_no_support_type);
+                    Toast.makeText(SimpleJumpActivity.this, com.easefun.polyv.livecommon.R.string.plv_scene_login_toast_cloudclass_no_support_type, Toast.LENGTH_SHORT).show();
                 }
                 finish();
             }
 
             @Override
             public void onLoginFailed(String s, Throwable throwable) {
-                ToastUtils.showShort(s);
+                Toast.makeText(SimpleJumpActivity.this, s, Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -157,7 +157,7 @@ public class SimpleJumpActivity extends Activity {
                 if (PLVLiveScene.isCloudClassSceneSupportType(channelType)) {
                     PLVLaunchResult plvLaunchResult = PLVLCCloudClassActivity.launchPlayback(SimpleJumpActivity.this, channelId, channelType, videoId, null, viewerId, viewerName, viewerAvatar, PLVPlaybackListType.PLAYBACK);
                     if (!plvLaunchResult.isSuccess()) {
-                        ToastUtils.showShort(plvLaunchResult.getErrorMessage());
+                        Toast.makeText(SimpleJumpActivity.this, plvLaunchResult.getErrorMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
                 finish();
@@ -165,7 +165,7 @@ public class SimpleJumpActivity extends Activity {
 
             @Override
             public void onLoginFailed(String s, Throwable throwable) {
-                ToastUtils.showShort(s);
+                Toast.makeText(SimpleJumpActivity.this, s, Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
