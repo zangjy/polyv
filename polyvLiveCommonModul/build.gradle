@@ -66,6 +66,8 @@ dependencies {
     api 'androidx.room:room-runtime:2.0.0'
     annotationProcessor 'androidx.room:room-compiler:2.0.0'
     api 'androidx.room:room-rxjava2:2.0.0'
+    //保利威内部将1.0.8版本删除了，需要切换到1.0.9版本
+    api 'net.polyv.android:mediaplayer-full:1.0.9'
 
     //svga动画特效库
     api("com.github.yyued:SVGAPlayer-Android:2.6.1")
