@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PLVLCLikeIconView">
+        <attr name="src_wh" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="PLVLCCommodityPushLayout">
+        <attr name="plv_show_on_portrait" />
+        <attr name="plv_show_on_landscape" />
+    </declare-styleable>
+
+    <declare-styleable name="PLVLCRedpackView">
+        <attr name="plvlc_red_pack_hint_position" format="enum">
+            <enum name="left" value="1" />
+            <enum name="top" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>
